@@ -8,38 +8,35 @@ import "../lib/chainlink-brownie-contracts/contracts/src/v0.8/VRFConsumerBaseV2.
 contract RandomNumberConsumer is
     VRFConsumerBaseV2(0x8103B0A8A00be2DDC778e6e7eaa21791Cd364625)
 {
-    //initializing VRFCoordinator
     VRFCoordinatorV2Interface COORDINATOR;
 
     uint64 subId;
 
     uint256 public requestId;
-    // randomwords is not words
 
-    // it is numbers
     uint256[] randomWords;
 
     // coordinator for sepolia
-    address vrfCoordinator = 0x8103B0A8A00be2DDC778e6e7eaa21791Cd364625;
+    address constant vrfCoordinator =
+        0x8103B0A8A00be2DDC778e6e7eaa21791Cd364625;
 
     // 150 gwei gas lane
-    bytes32 keyHash =
+    bytes32 constant keyHash =
         0x474e34a077df58807dbe9c96d3c009b23b3c6d0cce433e59bbf5b34f823bc56c;
 
-    // number of block confirmations
-    uint16 requestConfirmations = 3;
+    uint16 constant requestConfirmations = 3;
 
-    //gas for callback request
-    uint32 callbackGasLimit = 200_000;
+    uint32 constant callbackGasLimit = 200_000;
 
-    // number of random numbers
-    uint32 numWords = 3;
+    uint32 constant numWords = 3;
 
     constructor(uint64 s_subId) {
         COORDINATOR = VRFCoordinatorV2Interface(vrfCoordinator);
         subId = s_subId;
     }
 
+    // user calls this function to request
+    // random numbers
     function requestRandomWords() external {
         requestId = COORDINATOR.requestRandomWords(
             keyHash,
@@ -50,11 +47,17 @@ contract RandomNumberConsumer is
         );
     }
 
+    // fallback function
+    //
+    // VRF calls this to
+    // send the number
     function fulfillRandomWords(
         uint256 requestId,
         uint256[] memory s_randomWords
     ) internal override {
         randomWords = s_randomWords;
         // use the random numbers
+        //
+        // lotteries, nft casting etc.
     }
 }
