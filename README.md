@@ -1,66 +1,15 @@
-## Foundry
+# Chainlink VRF Random Number Generator for NFT Casting
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+## Overview
 
-Foundry consists of:
+This repository demonstrates the use of Chainlink's Verifiable Random Function (VRF) contract to generate fair and provably random numbers for casting random NFTs. The advantage of using random numbers is to create variability in token mints.
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+## Features
 
-## Documentation
+- **Chainlink VRF Integration**: Utilizes Chainlink's VRF contract to obtain secure and verifiable random numbers.
+- **NFT Casting**: Users can request a random number which corresponds to a random tokenId.
 
-https://book.getfoundry.sh/
 
-## Usage
+## TODO
 
-### Build
-
-```shell
-$ forge build
-```
-
-### Test
-
-```shell
-$ forge test
-```
-
-### Format
-
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+- **Lottery**: Creating a lottery contract that uses the VRF.
